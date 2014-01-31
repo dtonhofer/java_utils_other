@@ -224,7 +224,7 @@ public class ByteCoding {
 	 */
 
 	protected static void hexify(int val, StringBuffer buf) {
-		hexify((byte) val, buf);
+		hexifyByte((byte) val, buf);
 	}
 
 	protected static String hexify(int val) {
