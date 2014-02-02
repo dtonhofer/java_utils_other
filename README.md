@@ -1,4 +1,6 @@
 java_utils_other
 ================
 
-Other java utils (this is a temp. repo)
+Java utility classes that have not found a place anywhere else. Very low complexity.
+
+
