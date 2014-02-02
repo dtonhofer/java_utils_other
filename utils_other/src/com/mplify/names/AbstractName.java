@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import com.mplify.checkers.Check;
+import static com.example.BasicChecks.*;
 import com.mplify.properties.PropertyName;
 
 /* 34567890123456789012345678901234567890123456789012345678901234567890123456789
@@ -51,9 +51,9 @@ public abstract class AbstractName implements Cloneable, Comparable<Object> {
      */
 
     public AbstractName(String name) {
-        Check.notNull(name, "name");
+        checkNotNull(name, "name");
         this.name = namify(name);
-        Check.isTrue(this.name != null, "The passed string '%s' could not be transformed into a proper 'name'", name);
+        checkTrue(this.name != null, "The passed string '%s' could not be transformed into a proper 'name'", name);
     }
 
     /**
@@ -122,7 +122,7 @@ public abstract class AbstractName implements Cloneable, Comparable<Object> {
         if (this == obj) {
             return 0; // fast guess
         }
-        Check.notNull(obj, "obj");
+        checkNotNull(obj, "obj");
         if (!(obj instanceof AbstractName)) {
             throw new ClassCastException("The passed 'obj' is of class " + obj.getClass().getName() + " instead of class " + AbstractName.class.getName());
         }
@@ -144,7 +144,7 @@ public abstract class AbstractName implements Cloneable, Comparable<Object> {
      */
 
     public static String setToString(Set<? extends AbstractName> set) {
-        Check.notNull(set, "set");
+        checkNotNull(set, "set");
         StringBuilder buf = new StringBuilder();
         // sort alphabetically
         List<AbstractName> list = new ArrayList(set);

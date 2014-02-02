@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 
-import com.mplify.checkers.Check;
+import static com.example.BasicChecks.*;
 import com.mplify.logging.LogFacilities;
 
 /* 34567890123456789012345678901234567890123456789012345678901234567890123456789
@@ -56,7 +56,7 @@ public class Parsing {
      */
 
     public static List<String> parseCommaSeparatedStuff(String line, boolean trim) {
-        Check.notNull(line, "line");
+        checkNotNull(line, "line");
         if (line.trim().isEmpty()) {
             // specially handle the empty string otherwise you will get a List with an "empty string" entry
             return new ArrayList(0);
@@ -143,7 +143,7 @@ public class Parsing {
      * Parse into an array instaed of a List<String>
      */
 
-    // @SuppressWarnings("unused")
+    @SuppressWarnings("unused")
     public static String[] parseCommaSeparatedAtomsToArray(String key, String val, Logger logger) {
         boolean warnIfDuplicates;
         List<String> list = Parsing.parseCommaSeparatedAtoms(val, key, logger, warnIfDuplicates = true);

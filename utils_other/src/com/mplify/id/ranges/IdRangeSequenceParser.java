@@ -3,7 +3,7 @@ package com.mplify.id.ranges;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.mplify.checkers.Check;
+import static com.example.BasicChecks.*;
 import com.mplify.id.AbstractId;
 
 /* 34567890123456789012345678901234567890123456789012345678901234567890123456789
@@ -46,8 +46,8 @@ public class IdRangeSequenceParser<T extends AbstractId> {
 
 //    @SuppressWarnings("static-method")
     public IdRangeSequence<T> parse(String rawIn, IdFactory<T> make,boolean checkSequence) {
-        Check.notNull(rawIn,"String");
-        Check.notNull(make,"IdFactory");
+        checkNotNull(rawIn,"String");
+        checkNotNull(make,"IdFactory");
         IdRangeSequence<T> res = new IdRangeSequence();
         String raw = rawIn;
         boolean separatorMustExist = false;

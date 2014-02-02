@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.mplify.checkers.Check;
+import static com.example.BasicChecks.*;
 import com.mplify.logging.LogFacilities;
 
 /* 34567890123456789012345678901234567890123456789012345678901234567890123456789
@@ -90,7 +90,7 @@ public class CommaSeparatedList {
      */
 
     public void addFromString(String rawIn) throws ParseException {
-        Check.notNull(rawIn, "raw string");
+        checkNotNull(rawIn, "raw string");
         String raw = rawIn;
         boolean separatorMustExist = false;
         while (!emptyLine.matcher(raw).matches()) {

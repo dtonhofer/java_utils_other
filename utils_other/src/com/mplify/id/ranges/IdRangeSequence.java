@@ -10,7 +10,8 @@ import java.util.TreeSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mplify.checkers.Check;
+import static com.example.BasicChecks.*;
+
 import com.mplify.id.AbstractId;
 
 /* 34567890123456789012345678901234567890123456789012345678901234567890123456789
@@ -104,6 +105,7 @@ public class IdRangeSequence<T extends AbstractId> {
      * Helper to compute the min of two ids
      */
 
+    @SuppressWarnings("unused")
     private T min(T a, T b) {
         if (a.getValue() > b.getValue()) {
             return b;
@@ -119,8 +121,8 @@ public class IdRangeSequence<T extends AbstractId> {
      */
 
     public void addRangeSequence(IdRangeSequence<T> newRangeSequence, boolean checkSequence) {
-        Check.notNull(newRangeSequence, "new range sequence");
-        Check.isTrue(newRangeSequence != this, "The passed 'new range sequence' is the same as 'this'");
+        checkNotNull(newRangeSequence, "new range sequence");
+        checkTrue(newRangeSequence != this, "The passed 'new range sequence' is the same as 'this'");
         for (IdRange<T> range : newRangeSequence.sequence) {
             this.addRange(range, checkSequence);
         }
@@ -135,7 +137,7 @@ public class IdRangeSequence<T extends AbstractId> {
         if (checkSequence) {
             checkSequence();
         }
-        Check.notNull(id, "id");
+        checkNotNull(id, "id");
         // the buffer holding the description is eliminated and will have to be rebuild on need
         toStringBuf = null;
         // find all those ranges that are strictly above "id" and that may abut
@@ -183,7 +185,7 @@ public class IdRangeSequence<T extends AbstractId> {
      */
 
     public void addRange(IdRange<T> newRangeIn, boolean checkSequence) {
-        Check.notNull(newRangeIn, "new range");
+        checkNotNull(newRangeIn, "new range");
         IdRange<T> newRange = newRangeIn; // this is done to avoid setting newRangeId; keeps compiler happy
         if (checkSequence) {
             checkSequence();
@@ -327,8 +329,8 @@ public class IdRangeSequence<T extends AbstractId> {
      */
 
     public String generateSqlFactor(String fieldName) {
-        Check.isTrue(!sequence.isEmpty(), "The sequence is currently empty; cannot generate SQL factor");
-        Check.notNull(fieldName, "field name");
+        checkTrue(!sequence.isEmpty(), "The sequence is currently empty; cannot generate SQL factor");
+        checkNotNull(fieldName, "field name");
         StringBuilder bufForRanges = new StringBuilder();
         StringBuilder bufForAtoms = new StringBuilder();
         boolean addCommaBetweenAtoms = false;

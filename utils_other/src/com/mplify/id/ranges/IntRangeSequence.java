@@ -10,7 +10,7 @@ import java.util.TreeSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mplify.checkers.Check;
+import static com.example.BasicChecks.*;
 
 /* 34567890123456789012345678901234567890123456789012345678901234567890123456789
  * *****************************************************************************
@@ -77,7 +77,7 @@ public class IntRangeSequence {
         }
     }
 
-    private final SortedSet<UnmodifiableIntRange> sequence = new TreeSet(new RangeComparator());
+    private final SortedSet<UnmodifiableIntRange> sequence = new TreeSet<UnmodifiableIntRange>(new RangeComparator());
 
     /**
      * Buffer for toString() operation
@@ -92,8 +92,8 @@ public class IntRangeSequence {
      */
 
     public void addRangeSequence(IntRangeSequence newRangeSequence, boolean checkSequence) {
-        Check.notNull(newRangeSequence, "new range sequence");
-        Check.isTrue(newRangeSequence != this, "The passed 'new range sequence' is the same as 'this'");
+        checkNotNull(newRangeSequence, "new range sequence");
+        checkTrue(newRangeSequence != this, "The passed 'new range sequence' is the same as 'this'");
         for (UnmodifiableIntRange range : newRangeSequence.sequence) {
             this.addRange(range, checkSequence);
         }
@@ -154,7 +154,7 @@ public class IntRangeSequence {
      */
 
     public void addRange(UnmodifiableIntRange newRangeIn, boolean checkSequence) {
-        Check.notNull(newRangeIn, "new range");
+        checkNotNull(newRangeIn, "new range");
         UnmodifiableIntRange newRange = newRangeIn; // this is done to avoid setting newRangeId; keeps compiler happy
         if (checkSequence) {
             checkSequence();
@@ -261,8 +261,8 @@ public class IntRangeSequence {
      */
 
     public String generateSqlFactor(String fieldName) {
-        Check.isTrue(!sequence.isEmpty(), "The sequence is currently empty; cannot generate SQL factor");
-        Check.notNull(fieldName, "field name");
+        checkTrue(!sequence.isEmpty(), "The sequence is currently empty; cannot generate SQL factor");
+        checkNotNull(fieldName, "field name");
         StringBuilder bufForRanges = new StringBuilder();
         StringBuilder bufForAtoms = new StringBuilder();
         boolean addCommaBetweenAtoms = false;

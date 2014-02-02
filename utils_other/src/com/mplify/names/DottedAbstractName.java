@@ -1,6 +1,6 @@
 package com.mplify.names;
 
-import com.mplify.checkers.Check;
+import static com.example.BasicChecks.*;
 
 /* 34567890123456789012345678901234567890123456789012345678901234567890123456789
  * *****************************************************************************
@@ -123,7 +123,7 @@ public abstract class DottedAbstractName extends AbstractName {
             }
         }
         String res = buf.toString();
-        Check.notNullAndNotOnlyWhitespace(res, "join result");
+        checkNotNullAndNotOnlyWhitespace(res, "join result");
         return res;
     }
 
@@ -133,9 +133,9 @@ public abstract class DottedAbstractName extends AbstractName {
      */
 
     private static String verifyStringStructure(String x) {
-        Check.notNull(x);
+        checkNotNull(x);
         String[] splitted = x.split("\\.", -1);
-        Check.isTrue(splitted.length > 0, "Empty string passed");
+        checkTrue(splitted.length > 0, "Empty string passed");
         StringBuilder buf = new StringBuilder();
         boolean addSep = false;
         for (int i = 0; i < splitted.length; i++) {
@@ -143,7 +143,7 @@ public abstract class DottedAbstractName extends AbstractName {
                 buf.append(".");
             }            
             String trimmed = splitted[i].trim();
-            Check.isFalse(trimmed.isEmpty(), "There is a fully empty sub element");
+            checkFalse(trimmed.isEmpty(), "There is a fully empty sub element");
             buf.append(trimmed);
             addSep = true;
         }

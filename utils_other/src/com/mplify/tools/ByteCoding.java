@@ -3,7 +3,7 @@ package com.mplify.tools;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.mplify.checkers.Check;
+import static com.example.BasicChecks.*;
 import com.mplify.logging.LogFacilities;
 
 /* 34567890123456789012345678901234567890123456789012345678901234567890123456789
@@ -124,7 +124,7 @@ public class ByteCoding {
 	 */
 
 	public static String toHexString(byte[] byteArray) {
-	    Check.notNull(byteArray,"byte array");
+	    checkNotNull(byteArray,"byte array");
 	    int nibbleCount = byteArray.length * 2;
 		return toHexString(byteArray, 0, nibbleCount, false);
 	}

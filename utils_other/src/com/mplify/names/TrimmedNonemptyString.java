@@ -1,6 +1,6 @@
 package com.mplify.names;
 
-import com.mplify.checkers.Check;
+import static com.example.BasicChecks.*;
 
 
 /* 34567890123456789012345678901234567890123456789012345678901234567890123456789
@@ -30,9 +30,9 @@ public class TrimmedNonemptyString implements Comparable<TrimmedNonemptyString> 
      */
 
     public TrimmedNonemptyString(String x) {
-        Check.notNull(x,"string");
+        checkNotNull(x,"string");
         this.x = x.trim();
-        Check.isFalse("".equals(this.x),"The passed String contains only whitespace or is empty");
+        checkFalse("".equals(this.x),"The passed String contains only whitespace or is empty");
     }
 
     /**
@@ -100,7 +100,7 @@ public class TrimmedNonemptyString implements Comparable<TrimmedNonemptyString> 
     
     @Override
     public int compareTo(TrimmedNonemptyString o) {
-        Check.notNull(o,"trimmed nonempty string");
+        checkNotNull(o,"trimmed nonempty string");
         return this.x.compareTo(o.x);
     }
     

@@ -1,6 +1,6 @@
 package com.mplify.id.ranges;
 
-import com.mplify.checkers.Check;
+import static com.example.BasicChecks.*;
 import com.mplify.id.AbstractId;
 
 /* 34567890123456789012345678901234567890123456789012345678901234567890123456789
@@ -104,7 +104,7 @@ public class IdRange<T extends AbstractId> {
      */
 
     public String generateSqlFactor(String fieldName, boolean withParentheses) {
-        Check.notNull(fieldName, "field name");
+        checkNotNull(fieldName, "field name");
         StringBuilder buf = new StringBuilder();
         if (withParentheses) {
             buf.append("(");

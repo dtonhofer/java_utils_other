@@ -1,6 +1,6 @@
 package com.mplify.id;
 
-import com.mplify.checkers.Check;
+import static com.example.BasicChecks.*;
 
 /* 34567890123456789012345678901234567890123456789012345678901234567890123456789
  * *****************************************************************************
@@ -26,6 +26,7 @@ import com.mplify.checkers.Check;
  *              compareTo now compares across various subtypes of AbstractId.
  * 2011.03.01 - Introduced Check()             
  * 2013.03.14 - Simplified, no longer dependes on org.w3c.dom.Node
+ * 2014.02.01 - Adapted to com.example.BasicChecks
  ******************************************************************************/
 
 public abstract class AbstractId implements Comparable<AbstractId> {
@@ -56,7 +57,7 @@ public abstract class AbstractId implements Comparable<AbstractId> {
      */
 
     public AbstractId(int x) {
-        Check.largerThanZero(x,"integer");
+        checkLargerThanZero(x,"integer");
         this.id = x;
     }
 
@@ -65,8 +66,8 @@ public abstract class AbstractId implements Comparable<AbstractId> {
      */
 
     public AbstractId(Integer x) {
-        Check.notNull(x, "integer");
-        Check.largerThanZero(x.intValue(),"integer");
+        checkNotNull(x, "integer");
+        checkLargerThanZero(x.intValue(),"integer");
         this.id = x.intValue();
     }
 
@@ -145,7 +146,7 @@ public abstract class AbstractId implements Comparable<AbstractId> {
         if (this == obj) {
             return 0; // quick guess
         }
-        Check.notNull(obj,"obj");
+        checkNotNull(obj,"obj");
         //
         // Actual class equality?
         //
