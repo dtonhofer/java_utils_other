@@ -8,7 +8,7 @@ public class StringManip {
      * otherwise, return x, possibly trimmed
      */
     
-    public static String makeNullIfEmpty(String x, boolean trim) {
+    public static String makeNullIfEmpty(String x, boolean trimNonEmptyString) {
         if (x == null) {
             return null;
         } else {
@@ -16,7 +16,7 @@ public class StringManip {
             if (tx.isEmpty()) {
                 return null;
             } else {
-                if (trim) {
+                if (trimNonEmptyString) {
                     return tx;
                 } else {
                     return x;
