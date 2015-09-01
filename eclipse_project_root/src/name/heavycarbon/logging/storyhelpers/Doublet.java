@@ -1,9 +1,11 @@
 package name.heavycarbon.logging.storyhelpers;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import name.heavycarbon.logging.LogFacilities;
-import name.heavycarbon.utils.DateTexter;
 
 /* 34567890123456789012345678901234567890123456789012345678901234567890123456789
  *******************************************************************************
@@ -19,9 +21,17 @@ import name.heavycarbon.utils.DateTexter;
 
 public class Doublet {
 
+	private final static SimpleDateFormat SDF;
+	
+	static {
+		TimeZone UTC = TimeZone.getTimeZone("UTC");
+	    SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    SDF.setCalendar(Calendar.getInstance(UTC));
+	}
+	
     private final String left; // not null, trimmed, may be multiline
     private final String right; // not null, may be multiline
-
+        
     /*
      * Flag bits
      */
@@ -95,8 +105,11 @@ public class Doublet {
                 //
                 // Special handling for Date? ok, but a bit bizarre... what else
                 // needs "special handling"?
-                //
-                myRight = DateTexter.ALTERNATE0.inUTC((Date) right) + " UTC";
+                // TODO: Notice that this work below is a bit costly!!
+            	//
+            	synchronized (SDF) {
+            		myRight = SDF.format((Date) right) + " UTC";
+            	}
             } else {
                 //
                 // Note that "right" may actually be a "Story" and yield a

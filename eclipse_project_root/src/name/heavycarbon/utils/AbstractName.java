@@ -16,12 +16,14 @@ import static name.heavycarbon.checks.BasicChecks.*;
  *    return or assign the name for an object of type X with the name for
  *    an object of type Y
  *    
- * 2) You can be sure that the underlying string is ** never null **
- *    ** always trimmed **, ** never empty ** and ** always lowercase **. 
+ * 2) You can be sure that the underlying string is 
+ *    - never null
+ *    - always trimmed
+ *    - never empty
+ *    - always lowercase
+ *    But there are no further restrictions on the string content. 
  *    Checking passed parameters then reduces to verifying the the passed 
  *    AbstractName subclass instance is different from null
- * 
- * Compare with "TrimmedString", which can be mixed case.
  * 
  * 2007.01.22 - Created
  * 2008.11.30 - Made comparable by adding code from "comm"
@@ -154,7 +156,7 @@ public abstract class AbstractName implements Cloneable, Comparable<Object> {
     }
 
     /**
-     * Comparison sugar
+     * Comparison sugar, compares with a String or an AbstractName
      */
 
     public boolean lenientEquals(String other) {
@@ -162,7 +164,7 @@ public abstract class AbstractName implements Cloneable, Comparable<Object> {
     }
 
     /**
-     * Comparison sugar
+     * Comparison sugar, compares with a String or an AbstractName
      */
 
     public boolean lenientEquals(AbstractName other) {

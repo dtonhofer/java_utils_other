@@ -45,9 +45,9 @@ import org.slf4j.LoggerFactory;
  *              This class renamed from ResourceHelpers --> ResourceHelp_Java 
  ******************************************************************************/
 
-public class ResourceHelp_Java {
+public class ResourceHelpJava {
 
-    private final static String CLASS = ResourceHelp_Java.class.getName();
+    private final static String CLASS = ResourceHelpJava.class.getName();
     private final static Logger LOGGER_launder = LoggerFactory.getLogger(CLASS + ".launder");
     private final static Logger LOGGER_getStreamFromResource = LoggerFactory.getLogger(CLASS + ".getStreamFromResource");
     private final static Logger LOGGER_existsResource = LoggerFactory.getLogger(CLASS + ".existsResource");
@@ -62,7 +62,7 @@ public class ResourceHelp_Java {
      * Unreachable constructor
      */
 
-    private ResourceHelp_Java() {
+    private ResourceHelpJava() {
         // Unreachable constructor
     }
 
