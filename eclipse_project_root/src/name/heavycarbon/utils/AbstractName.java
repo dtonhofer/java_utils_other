@@ -34,6 +34,7 @@ import static name.heavycarbon.checks.BasicChecks.*;
  *              Other functions can then use this to get an "abstract 
  *              name" in a String w/o having to call "new AbstractName"
  * 2013.02.01 - Added lenientEquals()              
+ * 2015.09.02 - Added namifyWithNullOnFailure() for clarity
  ******************************************************************************/
 
 public abstract class AbstractName implements Cloneable, Comparable<Object> {
@@ -51,7 +52,18 @@ public abstract class AbstractName implements Cloneable, Comparable<Object> {
     }
 
     /**
-     * Helper that "namifies" a string (trims, lowercases). Returns (null) if the string could not be namified, in particular if (null) was passed in.
+     * Helper that "namifies" a string (trims, lowercases). 
+     * Returns (null) if the string could not be namified, in particular if (null) was passed in.
+     */
+
+    public static String namifyWithNullOnFailure(String x) {
+    	return namify(x);
+    }
+
+    /**
+     * Helper that "namifies" a string (trims, lowercases). 
+     * Returns (null) if the string could not be namified, in particular if (null) was passed in.
+     * Same as namifyWithNullOnFailure()
      */
 
     public static String namify(String x) {
